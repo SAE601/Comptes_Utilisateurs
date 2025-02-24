@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changer le mot de passe</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style1.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -157,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <br>
     
-        <a class="btn btn-primary" href="dashboard.php" role="button">Retour au dashboard</a>
+        <a class="btn btn-primary" href="dashboard.php" role="button"><i class="bi bi-arrow-left"></i></a>
     </div>
 </body>
 
