@@ -18,7 +18,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['user_id'] = $user['id'];
         header('Location: dashboard.php');
     } else {
-        $message = 'Mauvais identifiants';
+        $message = 'Identifiant ou mot de passe incorrect';
     }
 }
 ?>
