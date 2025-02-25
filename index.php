@@ -2,6 +2,14 @@
 
 include("config.php");
 
+session_start(); // Démarre la session
+
+// Vérifie si l'utilisateur est déjà connecté
+if (isset($_SESSION['user_id'])) {
+    header('Location: dashboard.php'); // Redirige vers le dashboard
+    exit(); // Arrête l'exécution du script
+}
+
 $message = '';
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -116,7 +124,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         <p style="color:red"><?= $message ?></p>
     <?php endif; ?>
 
-    <form action="login.php" method="post">
+    <form action="index.php" method="post">
         <div>
             <label for="username">Nom d'utilisateur:</label>
             <input type="text" id="username" name="username">
@@ -134,5 +142,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     </form>
 </div>
 
+<!-- Inclure le fichier JavaScript -->
+<script src="index.js"></script>
 </body>
 </html>

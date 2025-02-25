@@ -15,7 +15,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     if ($result) {
         $message = 'Inscription réussie!';
-        header('Location: login.php');
+        header('Location: index.php');
     } else {
         $message = 'Erreur lors de l\'inscription.';
     }
@@ -29,7 +29,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
     <style>
-        /* Utilisez le même CSS que login.php */
+        /* Utilisez le même CSS que index.php */
         body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
