@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <div class="dashboard-container">
-        <h2>Informations du compte : </h2>
+        <h2>Informations du compte : </h2>  
         <?php
 
         try {
@@ -46,7 +46,7 @@ if (!isset($_SESSION['user_id'])) {
             $id = $_SESSION['user_id'];
 
             // Prepare the SQL query with a placeholder
-            $stmt = $bdd->prepare("SELECT username, email FROM users WHERE id = :id");
+            $stmt = $bdd->prepare("SELECT username, email, lerole FROM users WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             // Execute the query
@@ -56,8 +56,9 @@ if (!isset($_SESSION['user_id'])) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user) {
-                echo "Nom de l'utilisateur : " . $user['username'] . "<br>";
-                echo "Adresse Email reliée : " . $user['email'] . "<br>";
+                echo "Nom de l'utilisateur : " . $user['username'] . "<br/>";
+                echo "Adresse Email reliée : " . $user['email'] . "<br/>";
+                echo "Rôle :" .  $user['lerole'] . "<br/>";
             } else {
                 echo "Aucun utilisateur trouvé avec cet ID.";
             }
