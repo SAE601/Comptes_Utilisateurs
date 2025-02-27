@@ -31,6 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Tous les champs sont obligatoires.";
     } elseif ($nouveau_mdp !== $confirmer_mdp) {
         $error = "Les nouveaux mots de passe ne correspondent pas.";
+    } elseif (strlen($nouveau_mdp) < 8) {
+        $error = 'Le mot de passe doit contenir au moins 8 caractères.';
+    } elseif (preg_match('/\s/', $nouveau_mdp)) {
+        $error = 'Le mot de passe ne doit pas contenir d\'espaces.';
+    } elseif (!preg_match('/\d/', $nouveau_mdp)) {
+        $error = 'Le mot de passe doit contenir au moins un chiffre.';
     } else {
         // Récupérer l'ID de l'utilisateur connecté
         $id = $_SESSION['user_id'];

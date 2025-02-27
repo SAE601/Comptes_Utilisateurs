@@ -1,11 +1,26 @@
 <?php
+session_start();
+include("config.php");
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
 // Définir les photos disponibles
 $photos = ['nyquit1.jpg', 'nyquit2.jpg', 'nyquit3.jpg', 'nyquit4.jpg', 'nyquit5.jpg', 'nyquit6.jpg', 'nyquit7.jpg', 'nyquit8.jpg'];
 
 // Vérifier si une photo a été sélectionnée
 if (isset($_GET['photo'])) {
-    // Enregistrer la photo sélectionnée dans un cookie
-    setcookie('profile_photo', $_GET['photo'], time() + (86400 * 30), "/"); // Cookie valide 30 jours
+    $selected_photo = $_GET['photo'];
+
+    // Mettre à jour la photo de profil dans la base de données
+    $user_id = $_SESSION['user_id'];
+    $sql = "UPDATE users SET profile_photo = :profile_photo WHERE id = :user_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['profile_photo' => $selected_photo, 'user_id' => $user_id]);
+
     // Rediriger vers la page profil.php
     header('Location: profil.php');
     exit();

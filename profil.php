@@ -1,12 +1,21 @@
 <?php
 session_start();
+include("config.php");
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
 }
-$currentPhoto = isset($_COOKIE['profile_photo']) ? $_COOKIE['profile_photo'] : 'nyquit1.jpg';
+
+// Récupérer les informations de l'utilisateur
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT profile_photo FROM users WHERE id = :user_id";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['user_id' => $user_id]);
+$user = $stmt->fetch();
+
+$profile_photo = $user['profile_photo'] ?? 'nyquit1.jpg'; // Photo par défaut
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +59,10 @@ $currentPhoto = isset($_COOKIE['profile_photo']) ? $_COOKIE['profile_photo'] : '
 
     <div class="dashboard-container" style='text-align: center'>
         <h2>Photo de profil</h2>
-        <!-- Afficher la photo de profil actuelle -->
-        <img src="<?php echo htmlspecialchars($currentPhoto); ?>" alt="Photo de profil" class="profile-photo">
+         <!-- Afficher la photo de profil de l'utilisateur -->
+         <img src="<?php echo htmlspecialchars($profile_photo); ?>" alt="Photo de profil" class="profile-photo">
         <!-- Bouton pour modifier la photo -->
-        <form action="modifier_photo.php" method="GET" >
+        <form action="modifier_photo.php" method="GET">
             <button type="submit" class="modify-button">Modifier</button>
         </form>
     </div>
