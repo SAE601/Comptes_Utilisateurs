@@ -105,6 +105,33 @@ $profile_photo = $user['profile_photo'] ?? 'nyquit1.jpg'; // Photo par défaut
         <a class="btn btn-primary" href="changemdp.php" role="button">Changer de mot de passe</a>
     </div>
 
+    <div class="dashboard-container">
+        <h2>Changer le mode d'affichage :</h2>
+        <form method="POST" action="update_mode.php" id="modeForm">
+            <label for="mode">Sélectionnez un mode :</label>
+            <select name="mode" id="mode" required>
+                <?php
+                // Définir la valeur de mode (par défaut si non définie)
+                $mode = isset($user['mode']) ? $user['mode'] : 'defaut';
+                ?>
+                <option value="defaut" <?php echo ($mode === 'defaut') ? 'selected' : ''; ?>>Défaut</option>
+                <option value="deuteranope" <?php echo ($mode === 'deuteranope') ? 'selected' : ''; ?>>Deutéranope</option>
+                <option value="tritanope" <?php echo ($mode === 'tritanope') ? 'selected' : ''; ?>>Tritanope</option>
+                <option value="protanope" <?php echo ($mode === 'protanope') ? 'selected' : ''; ?>>Protanope</option>
+                <option value="noir et blanc" <?php echo ($mode === 'noir et blanc') ? 'selected' : ''; ?>>Noir et Blanc</option>
+                <option value="contraste élevé" <?php echo ($mode === 'contraste élevé') ? 'selected' : ''; ?>>Contraste Élevé</option>
+                <option value="sombre" <?php echo ($mode === 'sombre') ? 'selected' : ''; ?>>Sombre</option>
+            </select>
+        </form>
+
+        <!-- JavaScript pour soumettre automatiquement le formulaire -->
+        <script>
+            document.getElementById('mode').addEventListener('change', function() {
+                document.getElementById('modeForm').submit();
+            });
+        </script>
+    </div>
+
     <?php if ($user && $user['lerole'] === 'admin'): ?>
     <div class="dashboard-container">
         <h2>Section Administrateur</h2>
@@ -115,19 +142,26 @@ $profile_photo = $user['profile_photo'] ?? 'nyquit1.jpg'; // Photo par défaut
         <?php
         try {
             // Récupérer tous les utilisateurs depuis la base de données
-            $stmt = $bdd->prepare("SELECT id, username, email, lerole FROM users");
+            $stmt = $bdd->prepare("SELECT id, username, email, lerole, last_login FROM users");
             $stmt->execute();
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($users) {
                 echo "<table class='table table-bordered'>";
-                echo "<thead><tr><th>ID</th><th>Nom d'utilisateur</th><th>Email</th><th>Rôle</th><th>Action</th></tr></thead>";
+                echo "<thead><tr><th>ID</th><th>Nom d'utilisateur</th><th>Dernière connexion</th><th>Rôle</th><th>Action</th></tr></thead>";
                 echo "<tbody>";
                 foreach ($users as $user) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($user['id']) . "</td>";
                     echo "<td>" . htmlspecialchars($user['username']) . "</td>";
-                    echo "<td>" . htmlspecialchars($user['email']) . "</td>";
+                    // Afficher la date et l'heure de dernière connexion si elle n'est pas NULL
+                    echo "<td>";
+                    if ($user['last_login'] !== null) {
+                        echo htmlspecialchars($user['last_login']);
+                    } else {
+                        echo ""; // Affiche rien si last_login est NULL
+                    }
+                    echo "</td>";
                     echo "<td>" . htmlspecialchars($user['lerole']) . "</td>";
                     // Ajouter un bouton "Promouvoir" uniquement pour les membres
                     if ($user['lerole'] === 'membre') {
@@ -135,7 +169,7 @@ $profile_photo = $user['profile_photo'] ?? 'nyquit1.jpg'; // Photo par défaut
                                 <form method='POST' action='promote_user.php' style='display:inline; margin-right: 20px;'>
                                     <input type='hidden' name='user_id' value='" . htmlspecialchars($user['id']) . "'>
                                     <button type='submit' class='btn btn-success'>Promouvoir</button>
-                                </form  >
+                                </form>
                               </td>";
                     } else {
                         echo "<td></td>"; // Pas de bouton pour les autres rôles
@@ -152,7 +186,7 @@ $profile_photo = $user['profile_photo'] ?? 'nyquit1.jpg'; // Photo par défaut
         }
         ?>
     </div>
-    <?php endif; ?>
+<?php endif; ?>
 
 </body>
 

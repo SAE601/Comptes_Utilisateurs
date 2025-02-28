@@ -21,9 +21,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
+        // Mettre à jour l'heure de dernière connexion
+        $update_sql = "UPDATE users SET last_login = NOW() WHERE id = :user_id";
+        $update_stmt = $pdo->prepare($update_sql);
+        $update_stmt->execute(['user_id' => $user['id']]);
+
+        // Démarrer la session et rediriger
         session_start();
         $_SESSION['user_id'] = $user['id'];
         header('Location: profil.php');
+        exit();
     } else {
         $message = 'Identifiant ou mot de passe incorrect';
     }
