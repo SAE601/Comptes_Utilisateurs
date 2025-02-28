@@ -59,13 +59,24 @@ $profile_photo = $user['profile_photo'] ?? 'images\nyquit1.jpg'; // Photo par d�
 
     <div class="dashboard-container" style='text-align: center'>
         <h2>Photo de profil</h2>
-         <!-- Afficher la photo de profil de l'utilisateur -->
-         <img src="<?php echo htmlspecialchars($profile_photo); ?>" alt="Photo de profil" class="profile-photo">
+        <!-- Afficher la photo de profil de l'utilisateur -->
+        <img src="<?php echo htmlspecialchars($profile_photo); ?>" alt="Photo de profil" class="profile-photo">
         <!-- Bouton pour modifier la photo -->
         <form action="modifier_photo.php" method="GET">
             <button type="submit" class="modify-button">Modifier</button>
         </form>
     </div>
+
+    <style>
+        .profile-photo {
+            width: 150px; /* Taille souhaitée */
+            height: 150px; /* Taille souhaitée */
+            border-radius: 50%; /* Effet cercle */
+            object-fit: cover; /* Rognage contrôlé */
+            object-position: top; /* Centre l'image */
+            border: 3px solid #ccc; /* Bordure optionnelle */
+        }
+    </style>
 
     <div class="dashboard-container">
         <h2>Informations du compte : </h2>  
@@ -91,7 +102,7 @@ $profile_photo = $user['profile_photo'] ?? 'images\nyquit1.jpg'; // Photo par d�
 
             if ($user) {
                 echo "Nom de l'utilisateur : " . $user['username'] . "<br/>";
-                echo "Adresse Email reliée : " . $user['email'] . "<br/>";
+                echo "Adresse email : " . $user['email'] . "<br/>";
                 echo "Rôle : " .  $user['lerole'] . "<br/>";
             } else {
                 echo "Aucun utilisateur trouvé avec cet ID.";

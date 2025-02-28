@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("config.php") ;
 
 //$req = "select le role du gars dont le user_id = " . $_POST['userid'];
 
