@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 25 fév. 2025 à 15:16
+-- Généré le : ven. 28 fév. 2025 à 09:27
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -33,20 +33,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'membre',
+  `lerole` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'membre',
+  `profile_photo` varchar(255) DEFAULT 'nyquit1.jpg',
+  `last_login` datetime DEFAULT NULL,
+  `mode` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'defaut',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`) VALUES
-(6, 'Jean Marie Le Pen', '$2y$10$RRCEWuWZzcaC01K4NmoEzuacO/CnMX5PFo3fC/gL/bRkxsL0FuWTS', 'jeanneausecour@rn.fr', 'membre'),
-(4, 'Francois Bayroux', '$2y$10$Q8aGBP.CZp7GnrO166j3vOCDVhbw4S05NJsFf1QEBYxzTAcvJoawG', 'liliancarriere@gmail.com', 'membre'),
-(3, 'Mr Bah', '$2y$10$1Ddu17wuXGDzT.m3RANMDubCQqkGAlnahU/3Z3f2ngNPhmfzMJQ4i', 'bastien.gononlyon@gmail.com', 'membre'),
-(8, 'Elon Musk', '$2y$10$kXzLbPcEUWjiqQ4q9tzpN.69oWUp1qW88trjHmL0Gyn8WyXOiFOQC', 'gemPahleinwar@kkk.us', 'membre'),
-(9, 'othmane83', '$2y$10$rzUHubgGvKXtDbvQE0k3juy7LutU57kdJhUQYhrA1pV26U.MByYLe', 'elbertalothmane0@gmail.com', 'admin');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `lerole`, `profile_photo`, `last_login`, `mode`) VALUES
+(9, 'othmane83', '$2y$10$rzUHubgGvKXtDbvQE0k3juy7LutU57kdJhUQYhrA1pV26U.MByYLe', 'elbertalothmane0@gmail.com', 'admin', 'images\\nyquit7.jpg', '2025-02-27 11:17:55', 'tritanope');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
