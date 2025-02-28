@@ -23,7 +23,7 @@
     $id = $_POST['user_id'];
 
     // Connexion à la base de données
-    $bdd = new PDO('mysql:host=localhost;port=3306;dbname=compte_utilisateur', 'root', '');
+    $bdd = $pdo ;
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $bdd->exec("set names utf8");
 

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mode'])) {
     $user_id = $_SESSION['user_id'];
 
     try {
-        $bdd = new PDO('mysql:host=localhost;port=3306;dbname=compte_utilisateur', 'root', '');
+        $bdd = $pdo ;
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $bdd->exec("set names utf8");
         // Mettre à jour le mode dans la base de données

@@ -73,10 +73,9 @@ $profile_photo = $user['profile_photo'] ?? 'images\nyquit1.jpg'; // Photo par d√
 
         try {
             // Connect to the database
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=compte_utilisateur', 'root', '');
+            $bdd = $pdo ;
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $bdd->exec("set names utf8");
-
             // Get the user ID from the session
             $id = $_SESSION['user_id'];
 
@@ -142,7 +141,7 @@ $profile_photo = $user['profile_photo'] ?? 'images\nyquit1.jpg'; // Photo par d√
         <?php
         try {
             // R√©cup√©rer tous les utilisateurs depuis la base de donn√©es
-            $stmt = $bdd->prepare("SELECT id, username, email, lerole, last_login FROM users");
+            $stmt = $pdo->prepare("SELECT id, username, email, lerole, last_login FROM users");
             $stmt->execute();
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
