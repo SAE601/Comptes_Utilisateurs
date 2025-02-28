@@ -15,7 +15,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['user_id' => $user_id]);
 $user = $stmt->fetch();
 
-$profile_photo = $user['profile_photo'] ?? 'nyquit1.jpg'; // Photo par défaut
+$profile_photo = $user['profile_photo'] ?? 'images\nyquit1.jpg'; // Photo par défaut
 ?>
 
 <!DOCTYPE html>

@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Définir les photos disponibles
-$photos = ['nyquit1.jpg', 'nyquit2.jpg', 'nyquit3.jpg', 'nyquit4.jpg', 'nyquit5.jpg', 'nyquit6.jpg', 'nyquit7.jpg', 'nyquit8.jpg'];
+$photos = ['images\nyquit1.jpg', 'images\nyquit2.jpg', 'images\nyquit3.jpg', 'images\nyquit4.jpg', 'images\nyquit5.jpg', 'images\nyquit6.jpg', 'images\nyquit7.jpg', 'images\nyquit8.jpg'];
 
 // Vérifier si une photo a été sélectionnée
 if (isset($_GET['photo'])) {
