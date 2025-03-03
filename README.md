@@ -10,9 +10,9 @@ Ce projet est une application web de gestion des utilisateurs avec des fonctionn
 - **Tableau de Bord** : Interface utilisateur pour gérer les utilisateurs et voir les statistiques.
 
 ## Technologies utilisées
-- **Frontend** : HTML, CSS (Bootstrap, style1.css, login.css), JavaScript (jQuery, script.js)
-- **Backend** : PHP (index.php, register.php, login.php, profil.php, promote_user.php, logout.php, modifier_photo.php, dashboard.php)
-- **Base de Données** : MySQL (non incluse dans ce dépôt)
+- **Frontend** : HTML, CSS (Bootstrap, `style1.css`), JavaScript (`script.js`)
+- **Backend** : PHP (`index.php`, `register.php`, `login.php`, `profil.php`, `promote_user.php`, `logout.php`, `modifier_photo.php`, `dashboard.php`)
+- **Base de Données** : MySQL (`users.sql`)
 
 ## Installation
 1. Configurez le serveur local Wamp pour faire des essais.
