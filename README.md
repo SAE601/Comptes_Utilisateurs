@@ -15,37 +15,28 @@ Ce projet est une application web de gestion des utilisateurs avec des fonctionn
 - **Base de Données** : MySQL (non incluse dans ce dépôt)
 
 ## Installation
-1. Clonez le dépôt :
-   ```sh
-   git clone https://github.com/votre-utilisateur/votre-projet.git
-   ```
-2. Déplacez-vous dans le dossier :
-   ```sh
-   cd votre-projet
-   ```
-3. Configurez votre serveur local (XAMPP, WAMP, etc.).
-4. Importez la base de données (`database.sql` si disponible).
-5. Configurez la connexion à la base de données dans `config.php` (si applicable).
-6. Lancez le serveur et accédez à `http://localhost/votre-projet/`.
+1. Configurez le serveur local Wamp pour faire des essais.
+2. Importez la base de données `users.sql`.
+3. Cloner l'intégrité du répertoire au sein du dossier `wamp64\www`
+4. Lancez le serveur et accédez à `http://localhost/Comptes_Utilisateurs`.
 
 ## Utilisation
-- **Page d'accueil** : `index.php`
-- **Inscription** : `register.php`
-- **Connexion** : `login.php`
-- **Tableau de bord** : `dashboard.php`
-- **Gestion du profil** : `profil.php`
-- **Déconnexion** : `logout.php`
+- **Page d'accueil** : `index.php`. Cette page permets de se login ou d'accéder à la page de création d'utilisateur.
+- **Inscription** : `register.php`. Cette page permets de créer un nouvel utilisateur.
+- **Connexion** : `login.php`. Fichier qui effectue la connexion au serveur.
+- **Tableau de bord** : `dashboard.php`. Cette page permets d'accéder au tableau de contrôle du projet.
+- **Gestion du profil** : `profil.php`. Cette page permets de voir les informations du compte connecter.
+- **Déconnexion** : `logout.php`. Fichier qui effectue la déconnexion avec le serveur.
 
 ## Développement
 - **AJAX** est utilisé dans `script.js` pour promouvoir un utilisateur sans recharger la page.
 - **CSS** pour le design des formulaires et de l'interface utilisateur.
 - **PHP** gère l'authentification, la promotion et les actions utilisateur.
 
-## Auteur
-- **Votre Nom**
-- Contact : `votre.email@example.com`
-- [GitHub](https://github.com/votre-utilisateur)
+## Auteurs
+- **Othmane El Bertal**
+- **Lilian Carrière**
 
 ## Licence
-Ce projet est sous licence MIT. Voir `LICENSE` pour plus de détails.
+Y a pas de liscence mdr on est des clochards
 
